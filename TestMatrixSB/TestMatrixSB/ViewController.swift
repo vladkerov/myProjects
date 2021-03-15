@@ -42,33 +42,30 @@ class ViewController: UIViewController {
                         [0,0,0,0,0,0,0,0,0,0],
                         [0,0,0,0,0,0,0,0,0,0]]
     
-    let concurrentQueue = DispatchQueue(label: "com.concqueue", attributes: .concurrent)
-
+    
+    let safeQueue = DispatchQueue(label: "com.safequeue", attributes: .concurrent)
     
     func matrixMultiply (matrix1:[[Int]], matrix2:[[Int]])-> [[Int]]  {
-        let n = (matrix1[0].count)-1
-        let m = (matrix1.count)-1
-        let q = (matrix2[0].count)-1
- 
-
-
-        for i in 0...m {
-            for j in 0...q {
+        let n = matrix1[0].count
+        let m = matrix1.count
+        let q = matrix2[0].count
+        
+        
+        
+        DispatchQueue.concurrentPerform(iterations: m){ (i) in
+            DispatchQueue.concurrentPerform(iterations: q){ (j) in
                 var result = 0
-                
+                DispatchQueue.concurrentPerform(iterations: n){ (k) in
                     
-                    
-                for k in 0...n {
-
                     result += (matrix1[i][k])*(matrix2[k][j])
-
-                    }
-//                concurrentQueue.async(flags: .barrier){ [self] in
-                   resultMatrix[i][j] = result
-//                }
+                    
+                }
+                safeQueue.sync(flags: .barrier){
+                self.resultMatrix[i][j] = result
+                }
             }
         }
-  
+        
         return resultMatrix
     }
     
