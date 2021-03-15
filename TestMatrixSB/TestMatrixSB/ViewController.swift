@@ -54,19 +54,19 @@ class ViewController: UIViewController {
         
         DispatchQueue.concurrentPerform(iterations: m){ (i) in
         
-            print("цикл i:",Thread.current)
+            print("цикл i:\(i)",Thread.current)
             DispatchQueue.concurrentPerform(iterations: q){ (j) in
                 
-                print("цикл j:",Thread.current)
+                print("цикл j:\(j)",Thread.current)
                 var result = 0
                 DispatchQueue.concurrentPerform(iterations: n){ (k) in
-                    print("цикл k:",Thread.current)
+                    print("цикл k:\(k)",Thread.current)
                     
                     result += (matrix1[i][k])*(matrix2[k][j])
                     
                 }
                 safeQueue.sync(flags: .barrier){
-                    print("запись значения в результирующую матрицу:",Thread.current)
+                    print("запись значения в результирующую матрицу:\(i),\(i)",Thread.current)
                 self.resultMatrix[i][j] = result
                 }
             }
