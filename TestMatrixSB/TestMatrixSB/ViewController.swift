@@ -53,39 +53,30 @@ class ViewController: UIViewController {
         
         
         DispatchQueue.concurrentPerform(iterations: m){ (i) in
-        
+
             print("цикл i:\(i)",Thread.current)
+            
             DispatchQueue.concurrentPerform(iterations: q){ (j) in
-                
+
                 print("цикл j:\(j)",Thread.current)
                 var result = 0
                 DispatchQueue.concurrentPerform(iterations: n){ (k) in
-                    print("цикл k:\(k)",Thread.current)
-                    
+
+                    print("цикл k:\(k), i =\(i), j = \(j)",Thread.current)
                     result += (matrix1[i][k])*(matrix2[k][j])
-                    
                 }
                 safeQueue.sync(flags: .barrier){
-                    print("запись значения в результирующую матрицу:\(i),\(i)",Thread.current)
+                    print("запись значения в результирующую матрицу:\(i),\(j)",Thread.current)
                 self.resultMatrix[i][j] = result
                 }
             }
         }
-        
         return resultMatrix
     }
-    
-    
     override func viewDidLoad() {
         let newMatrix = matrixMultiply(matrix1: matrix1, matrix2: matrix2)
         print(newMatrix)
-        
-        
-        
         super.viewDidLoad()
-        
     }
-    
-    
 }
 
