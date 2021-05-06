@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Alamofire",
+        "repositoryURL": "https://github.com/Alamofire/Alamofire.git",
+        "state": {
+          "branch": null,
+          "revision": "f96b619bcb2383b43d898402283924b80e2c4bae",
+          "version": "5.4.3"
+        }
+      },
+      {
+        "package": "OAuth2",
+        "repositoryURL": "https://github.com/p2/OAuth2.git",
+        "state": {
+          "branch": null,
+          "revision": "7acf3fe72c43309c0b6ce84d82290d3912159699",
+          "version": "5.3.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
