@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21G83" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Machine" representedClassName="Machine" syncable="YES" codeGenerationType="class">
+        <attribute name="customer" optional="YES" attributeType="String"/>
+        <attribute name="descriptionOfProblem" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="matricola" optional="YES" attributeType="String"/>
+        <attribute name="spareParts" optional="YES" attributeType="String"/>
+        <attribute name="statusOfMachine" optional="YES" attributeType="String"/>
+        <attribute name="typeOfMachine" optional="YES" attributeType="String"/>
+        <attribute name="typeOfProblem" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="Machine" positionX="-63" positionY="-9" width="128" height="149"/>
+    </elements>
+</model>
